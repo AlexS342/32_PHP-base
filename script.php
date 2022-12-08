@@ -7,10 +7,6 @@ PHP 8.1.2-1ubuntu2.9 (cli) (built: Oct 19 2022 14:58:09) (NTS)
 Copyright (c) The PHP Group
 Zend Engine v4.1.2, Copyright (c) Zend Technologies
     with Zend OPcache v8.1.2-1ubuntu2.9, Copyright (c), by Zend Technologies
-alexs@desktop:~$ mysql -V
-mysql  Ver 8.0.31-0ubuntu0.22.04.1 for Linux on x86_64 ((Ubuntu))
-alexs@desktop:~$ nginx -v
-nginx version: nginx/1.18.0 (Ubuntu)
 */
 
 //Task #2
