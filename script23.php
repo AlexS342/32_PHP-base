@@ -12,8 +12,19 @@
 // 17   18   19   20   21
 
 $x = (int)readline("Enter the number: \n");
+$y = $x % 8;
 
-if(($x % 8) === 0) {echo "2\n";}
-if(($x % 8) >= 1 && ($x % 8) <= 5) {echo ($x % 8) . "\n";}
-if(($x % 8) === 6) {echo "4\n";}
-if(($x % 8) === 7) {echo "3\n";}
+switch(true){
+    case $y === 0 : 
+        echo "2\n"; 
+        break;
+    case $y >= 1 && $y <= 5 : 
+        echo "$y\n"; 
+        break;
+    case $y === 6 : 
+        echo "4\n"; 
+        break;
+    case $y === 7 : 
+        echo "3\n"; 
+        break;
+}
