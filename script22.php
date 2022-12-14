@@ -12,35 +12,23 @@ echo "\n";
 $userName = readline("Как я могу обращаться к тебе? \n");
 $quantityTask = (int) readline("$userName, сколько задач у вас на сегодня? \n");
 
-// Видимо я что то упустил, но переменные $allTask и $sumTime пришлось объявлять
-// перед началом цикла, иначе появлялась такая ошибка:
-// PHP Warning:  Undefined variable $sumTime in /home/alexs/developer/www/32_PHP-base/script22.php on line 37
-// PHP Warning:  Undefined variable $allTask in /home/alexs/developer/www/32_PHP-base/script22.php on line 38
-$allTask = null;
-$sumTime = null;
-$estimation = null;
-
-echo "\n";
+$allTask = 0;
+$sumTime = 0;
+$estimation = "";
 
 for ($i = 1; $i <= $quantityTask; $i++) {
 
     do{
         $task = readline("Давайте запишем на сегодня задачу №$i? \n");
-        $j = $task;
-    }while(!$j);
+    }while(!$task);
 
     do{
         $timeTask = (int)readline("Сколько времени она займет? \n");
-        $j = $timeTask;
-    }while(!$j);
+    }while(!$timeTask);
 
     $sumTime = $sumTime + $timeTask;
     $allTask = $allTask . "- $task ({$timeTask}ч)\n";
-
-    echo "\n";
 }
-
-var_dump($sumTime);
 
 switch (true){
     case !$sumTime:
@@ -63,10 +51,7 @@ switch (true){
         break;
 }
 
-$i = $i - 1;
-
-echo "$userName, сегодня у вас запланировано $i приоритетных задачи на день:\n";
+echo "$userName, сегодня у вас запланировано $quantityTask приоритетных задачи на день:\n";
 echo $allTask;
 echo "Примерное время выполнения плана = {$sumTime}ч\n";
-echo "
-$estimation\n\n";
+echo "$estimation\n\n";
