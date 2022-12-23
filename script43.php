@@ -53,8 +53,12 @@ function arraySearch (string $str, array $arr): bool
 {
     $res = false;
     foreach($arr as $el){
-        if(is_array($el)) $res = arraySearch ($str, $el);
-        if ($el === $str) $res = true;
+        if(is_array($el)) {
+            $res = arraySearch ($str, $el);
+        }
+        if ($el === $str) {
+            $res = true;
+        }
         if($res) break;
     }
     return $res;
