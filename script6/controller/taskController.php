@@ -49,8 +49,11 @@ if(isset($_SESSION['username'])){
     $show = $_SESSION['showTasks'];
 }
 
-$_POST = [];
-$_GET = [];
+if(isset($_POST['discription']) || isset($_GET['doneTask']) || isset($_GET['removeTask'])  || isset($_GET['show'])){
+    unset($_GET, $_POST);
+    header("Location: /?controller=task");
+    die;
+}
 
 $page ='task';
 
