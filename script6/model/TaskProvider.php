@@ -51,3 +51,29 @@ class TaskProvider
         return $arrayNotDoneTask;
     }
 }
+/*
+array(1) { 
+[0]=> object(Task)#3 (7) 
+{ 
+    ["description":"Task":private]=> string(21) "Выпить кофе" 
+    ["priority":"Task":private]=> int(3) 
+    ["isDone":"Task":private]=> bool(false) 
+    ["dateCreated":"Task":private]=> object(DateTime)#4 (3) 
+    { 
+        ["date"]=> string(26) "2023-01-04 22:16:25.104726" 
+        ["timezone_type"]=> int(3) 
+        ["timezone"]=> string(12) "Asia/Karachi" 
+    } 
+    ["dateUpdated":"Task":private]=> object(DateTime)#5 (3) 
+    { 
+        ["date"]=> string(26) "2023-01-04 22:16:25.104765" 
+        ["timezone_type"]=> int(3) 
+        ["timezone"]=> string(12) "Asia/Karachi" 
+    } 
+    ["dateDone":"Task":private]=> NULL 
+    ["user":"Task":private]=> object(User)#1 (1) 
+    { 
+        ["username":"User":private]=> string(5) "admin" 
+    } 
+} 
+*/

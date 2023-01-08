@@ -1,23 +1,11 @@
-<!--
-Предварительно стилилизацию выполнил внури тегов, планирую проработать оформление в свободное время
--->
+<nav class="navbar navbar-light" style="background-color: #82caff;">
+        
+    <a class="navbar-brand align-baseline logoWPR" href="/"><img class="logo" src="../img/logo.svg" alt="logo"><p>TODO</p></a>
+    <a class="nav-link <?php if($page === 'index'): ?>text-dark<?php else: ?>text-secondary<?php endif ?>" aria-current="page" href="/">Главная</a>
+    <a class="nav-link <?php if($page === 'task'): ?>text-dark<?php else: ?>text-secondary<?php endif ?> <?php if($username === null): ?>disabled text-white-50<?php endif ?>" <?php if($username === null): ?>tabindex="-1" aria-disabled="true"<?php endif ?> href="/?controller=task">Задачи</a>
+    <a class="nav-link <?php if($page === 'security'): ?>text-dark<?php else: ?>text-secondary<?php endif ?> <?php if($username !== null): ?>disabled text-white-50<?php endif ?>" <?php if($username === null): ?>tabindex="-1" aria-disabled="true"<?php endif ?> href="/?controller=security">Авторизация</a>
 
-<div style="background: #ffae1b; padding: 12px; margin:5px; border-radius: 10px;">
-    <ul class="nav">
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Главная</a>
-        </li>
-        <?php if($username === null): ?>
-        <li class="nav-item">
-            <a class="btn btn-primary" href="/?controller=security" role="button">Войти</a>
-        </li>
-        <?php elseif($username !== null): ?>
-        <li class="nav-item">
-            <a class="nav-link" href="/?controller=task">Задачи</a>
-        </li>
-        <li class="nav-item">
-            <a class="btn btn-primary" href="/?controller=security&action=logout" role="button">Выйти</a>
-        </li>
-        <?php endif ?>
-    </ul>
-</div>
+    <?php if($username !== null): ?>
+        <a class="nav-link text-secondary" href="/?controller=security&action=logout">Выйти</a>
+    <?php endif ?>
+</nav>

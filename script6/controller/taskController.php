@@ -14,17 +14,14 @@ if(isset($_SESSION['username'])){
 
     if(isset($_POST['discription'])){
         $taskProvider->addTask($_POST['discription'], (int) $_POST['priority'], $user);
-        $_POST = [];
     }
 
     if(isset($_GET['doneTask']) && $_GET['doneTask'] === 'TRUE'){
         $_SESSION['task'][$_GET['doneTaskID']]->setIsDone();
-        $_GET = [];
     }
 
     if(isset($_GET['removeTask']) && $_GET['removeTask'] === 'TRUE'){
         array_splice($_SESSION['task'], $_GET['removeTaskID'], 1);
-        $_GET = [];
     }
 
     $dataTask = $taskProvider->getArrayAllDataTask();
@@ -51,5 +48,10 @@ if(isset($_SESSION['username'])){
 
     $show = $_SESSION['showTasks'];
 }
+
+$_POST = [];
+$_GET = [];
+
+$page ='task';
 
 include "view/task.php";

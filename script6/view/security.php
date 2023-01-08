@@ -10,22 +10,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style/reset.css">
+    <link rel="stylesheet" href="../style/main.css">
+    <link rel="stylesheet" href="../style/menu.css">
+    <link rel="stylesheet" href="../style/security.css">
     <title>Авторизация - Менеджер задач</title>
 </head>
 
-<body style="background: #e3e3e3; padding: 12px; height: 100vw;">
+<body>
     <header>
         <?php include "menu.php"; ?>
     </header>
-    <main style="background: #ffc761; padding: 12px; height: 100%; margin:5px; border-radius: 10px;">
-        <form method="post">
-            <h3><?= $pageName ?></h3>
-            <label for="username">Имя пользователя</label>
-            <input type="text" name="username" id="username" placeholder="admin">
-            <label for="password">Имя пользователя</label>
-            <input type="password" name="password" id="password" placeholder="123">
-            <button class="btn btn-primary" type="submit">Войти</button>
-            <a href="/">на главную</a>
+    <main>
+        <form class="security" method="post">
+            <div class="security_header">
+                <h3 class="hd1">Авторизация</h3>
+            </div>
+            <div class="security_fieldWRP">
+                <div class="security_field">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="username" id="username" placeholder="admin">
+                        <label for="username">Имя пользователя (admin)</label>
+                    </div>
+                </div>
+                <div class="security_field">
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" name="password" id="password" placeholder="123">
+                        <label for="password">Пароль (123)</label>
+                    </div>
+                </div>
+            </div>
+            <div  class="security_button">
+                <a href="/"><button class="btn btn-primary" type="button">на главную</button></a>
+                <button class="btn btn-primary" type="submit">Войти</button>
+            </div>
         </form>
     </main>
 </body>

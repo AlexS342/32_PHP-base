@@ -1,0 +1,31 @@
+body {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #e3e3e3;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    background: #b6e8ff;
+    flex-grow: 1;
+    padding: 10px;
+}
+
+.hd1 {
+    margin: 12px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.hd3 {
+    margin-left: 20px;
+    font-size: 18px;
+    text-decoration: underline;
+}
+
+.hd5 {
+    font-size: 14px;
+    margin-right: 5px;
+}

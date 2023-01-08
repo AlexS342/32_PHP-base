@@ -1,0 +1,11 @@
+.logoWPR {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem 1rem;
+}
+
+.logo {
+    width: 36px;
+    margin: 0 12px;
+}

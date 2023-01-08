@@ -27,4 +27,6 @@ if(isset($_GET['action']) && $_GET['action'] === 'logout'){
     die;
 }
 
+$page = 'security';
+
 include "view/security.php";

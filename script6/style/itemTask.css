@@ -1,0 +1,43 @@
+.itemTask {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.itemTask-data {
+    display: flex;
+    flex-direction: column;
+    margin-left: 7px;
+}
+
+.itemTask-dataDescription {
+    display: flex;
+    margin: 6px;
+}
+
+.itemTask-dataDate {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 11px;
+}
+
+.itemTask-dataDateItem {
+    display: flex;
+    margin: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.itemTask-button {
+    display: flex;
+    align-items: center;
+}
+
+.itemTask-button>a {
+    margin: 3px;
+}
+
+.itemTask-button>a>svg {
+    margin-bottom: 2px;
+}

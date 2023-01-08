@@ -11,4 +11,6 @@ if(isset($_SESSION['username'])){
     $username = $user->getUsername();
 }
 
+$page = 'index';
+
 include "view/index.php";
