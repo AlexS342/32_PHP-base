@@ -1,0 +1,28 @@
+.security {
+    display: flex;
+    flex-direction: column;
+}
+
+.security_header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.security_fieldWRP {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.security_field {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin: 0 10px;
+}
+
+.security_button {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
