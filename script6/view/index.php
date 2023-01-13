@@ -35,7 +35,7 @@
                 <div>
                     Выполненая задача
                 </div>
-            </div>
+            <!-- </div> -->
             </li>
             <li>
                 <div class="alert alert-primary  d-flex align-items-center" role="alert">
