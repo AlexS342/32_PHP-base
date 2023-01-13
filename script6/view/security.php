@@ -25,14 +25,14 @@
             <div class="security_fieldWRP">
                 <div class="security_field">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" name="username" id="username" placeholder="admin">
-                        <label for="username">Имя пользователя (admin)</label>
+                        <input type="text" class="form-control" name="username" id="username" placeholder="admin" value="admin">
+                        <label for="username">Имя пользователя (value = admin)</label>
                     </div>
                 </div>
                 <div class="security_field">
                     <div class="form-floating mb-3">
-                        <input type="password" class="form-control" name="password" id="password" placeholder="123">
-                        <label for="password">Пароль (123)</label>
+                        <input type="password" class="form-control" name="password" id="password" placeholder="123" value="123">
+                        <label for="password">Пароль (value = 123)</label>
                     </div>
                 </div>
             </div>

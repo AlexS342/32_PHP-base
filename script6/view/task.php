@@ -1,3 +1,10 @@
+<?php 
+if($_SESSION['username'] === null){
+    header("Location: /?controller=404");
+    die;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -87,6 +94,7 @@
                     <div class="alert alert-danger" role="alert">
                         Раздел "Задачи" доступен только зарегистррированым пользователям. Пожалуйста войдите в свой аккаунт.
                     </div>
+
         <?php endif ?>
     </main>
 </body>

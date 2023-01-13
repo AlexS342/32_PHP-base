@@ -102,7 +102,34 @@
                     также подготовьте форму для их добавления.
                 </p>
             </li>
+            <li class="home-item">
+                <h3 class="hd3">
+                    Результат проверки Преподавателем
+                </h3>
+            </li>
+            <li class="home-item">
+                <p class="home-itemP" style="color:gray; font-size: 12px;">Лучше не подсказку логина пароля, а прямо в value выведите на время проверки, спасибо скажу только.</p>
+                <p class="home-itemP" style="color:gray; font-size: 12px;">На странице задач, когда их нет куча ворнингов</p>
+                <p class="home-itemP" style="color:gray; font-size: 12px;">Warning : Undefined array key "task" in model\TaskProvider.php on line 19</p>
+                <p class="home-itemP" style="color:gray; font-size: 12px;">$_SESSION['task'] еще не существует, а идет попытка чтения по несуществующему ключу, такие ситуации лучше обрабатывать через ?? или isset</p>
+                <p class="home-itemP" style="color:gray; font-size: 12px;">Даже после добавления задачи куча ворнингов</p>
+                <p class="home-itemP" style="color:gray; font-size: 12px;">Undefined array key "show"</p>
+                <p class="home-itemP" style="color:gray; font-size: 12px;">Undefined array key "showTasks"</p>
+                <p class="home-itemP" style="color:gray; font-size: 12px;">это все в taskController.php</p>
+                <p class="home-itemP" style="color:gray; font-size: 12px;">Не if($_GET['show'] === 'allTask') а if(isset($_GET['show']) && $_GET['show'] === 'allTask')</p>
+                <p class="home-itemP" style="color:green; font-size: 12px;">class TaskProvider сильная зависимость от Task</p>
+                <p class="home-itemP" style="color:green; font-size: 12px;">new Task внутри создаете, так менее гибко, чем если бы его снаружи передавали из контроллера.</p>
+                <p class="home-itemP" style="color:gray; font-size: 12px;">Очень верно всю работу с сессией завернули в TaskProvider, а нет не всю</p>
+                <p class="home-itemP" style="color:gray; font-size: 12px;">$_SESSION['task'][$_GET['doneTaskID']]->setIsDone(); вот это вижу в контроллере, не дожлно быть работы с сессией с данными вне класса, смысл в нем тогда теряется.</p>
+                <p class="home-itemP" style="color:gray; font-size: 12px;">array_splice($_SESSION['task'], $_GET['removeTaskID'], 1); вот еще, TaskProvider не доделали, все это внутри должно быть.</p>
+                <p class="home-itemP">$_SESSION['showTasks'] = 'allTask'; зря похвалил,</p>
+                <p class="home-itemP" style="color:gray; font-size: 12px;">unset($_GET, $_POST); зачем это делать, если тут же делаете редирект? После завершения скрипта и так все удалится.</p>
+                <p class="home-itemP" style="color:gray; font-size: 12px;">В общем внешне не плохо, а внутри архитектурных бардак, если используете классы делайте все через них, смысл тогда в них.</p>
+                <p class="home-itemP" style="color:gray; font-size: 12px;">if(isset($_SESSION['username'])) вот еще в теле вся основная логика, это тоже плохо архитектурно, отдельно проверка входа, и отдельно основная логика, не надо делать не нужных уровней.</p>
+                <p class="home-itemP" style="color:gray; font-size: 12px;">Отличное внешнее оформление, красиво. Внутри придет с опытом.</p>
+            </li>
         </ol>
+
 
     </main>
 </body>
