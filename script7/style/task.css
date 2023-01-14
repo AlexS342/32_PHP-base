@@ -1,0 +1,43 @@
+.addForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.addForm-FieldWRP {
+    margin: 10px;
+}
+
+.addForm-groupButton {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 10px;
+}
+
+.addForm-groupButtonPriority {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.addForm-ButtonAdd {
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+
+.task {
+    display: flex;
+    flex-direction: column;
+}
+
+.task-button {
+    margin: 10px;
+}
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
