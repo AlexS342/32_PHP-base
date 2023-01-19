@@ -30,15 +30,14 @@ if($_SESSION['username'] === null){
 
     <main>
         <h1 class="hd1">Задачи</h1>
-        <?php if(isset($_SESSION['username'])) : ?>
 
             <form class="addForm" method="post">
 
                 <h3 class="hd3">Добавить задачу</h3>
 
                 <div class="form-floating addForm-FieldWRP">
-                    <input type="text" class="form-control" name="discription" id="discription" placeholder="Поздравить преподавателя с новым годом">
-                    <label for="username">Поздравить преподавателя с новым годом</label>
+                    <input type="text" class="form-control" name="description" id="description" placeholder="Поздравить преподавателя с новым годом">
+                    <label for="description">Выполнить домашнее задание</label>
                 </div>
 
                 <div class="addForm-groupButton">
@@ -68,34 +67,34 @@ if($_SESSION['username'] === null){
                 </div>
 
                 <div class="task-button">
-                    <a class="btn btn-sm <?php if($show === 'allTask' || $show === null): ?>btn-primary<?php else : ?> btn-outline-primary <?php endif ?>" href="/?controller=task&show=allTask" role="button">Все задачи</a>
-                    <a class="btn btn-sm <?php if($show === 'notDone'): ?>btn-primary<?php else : ?> btn-outline-primary <?php endif ?>" href="/?controller=task&show=notDone" role="button">Не выполненые</a>
-                    <a class="btn btn-sm <?php if($show === 'done'): ?>btn-primary<?php else : ?> btn-outline-primary <?php endif ?>" href="/?controller=task&show=done" role="button">Выполненые</a>
+                    <a class="btn btn-sm <?php if($_SESSION['showTasks'] === 'allTask'): ?>btn-primary<?php else : ?> btn-outline-primary <?php endif ?>" href="/?controller=task&show=allTask" role="button">Все задачи</a>
+                    <a class="btn btn-sm <?php if($_SESSION['showTasks'] === 'notDone'): ?>btn-primary<?php else : ?> btn-outline-primary <?php endif ?>" href="/?controller=task&show=notDone" role="button">Не выполненые</a>
+                    <a class="btn btn-sm <?php if($_SESSION['showTasks'] === 'done'): ?>btn-primary<?php else : ?> btn-outline-primary <?php endif ?>" href="/?controller=task&show=done" role="button">Выполненые</a>
                 </div>
 
                 <div class="task-list">
-                    <?php if(isset($_SESSION['task']) && count($dataTask) > 0): ?>
-                        <?php foreach($dataTask as $key => $task) : ?>
-                            <?php ['description' => $description, 'priority' => $priority, 'isDone' => $isDone, 'dateCreated' => $dateCreated] = $task?>
+                    <?php if(count($dataTask) > 0): ?>
+                        <?php foreach($dataTask as $task) : ?>
+                            <?php ['id'=>$key, 'description' => $description, 'priority' => $priority, 'isDone' => $isDone, 'dateCreated' => $dateCreated] = $task?>
                                 <?php include "itemTask.php"; ?>
                         <?php endforeach ?>
                     <?php else: ?>
                         <div>
                             <div class="alert alert-success" role="alert">
-                                <?php if($show === 'allTask' || $show === null): ?><p>У вас нет задач, но вы можете их добавть.</p><?php endif ?>
-                                <?php if($show === 'notDone'): ?><P>У вас нет невыполненых задач.</p><?php endif ?>
-                                <?php if($show === 'done'): ?><P>У вас нет выполненых задач.</p><?php endif ?>
+                                <?php if($_SESSION['showTasks'] === 'allTask'): ?><p>У вас нет задач, но вы можете их добавть.</p><?php endif ?>
+                                <?php if($_SESSION['showTasks'] === 'notDone'): ?><P>У вас нет невыполненых задач.</p><?php endif ?>
+                                <?php if($_SESSION['showTasks'] === 'done'): ?><P>У вас нет выполненых задач.</p><?php endif ?>
                             </div>
                         </div>
                     <?php endif ?>
                 </div>
             </div>
-        <?php else : ?>
-                    <div class="alert alert-danger" role="alert">
-                        Раздел "Задачи" доступен только зарегистррированым пользователям. Пожалуйста войдите в свой аккаунт.
-                    </div>
-
-        <?php endif ?>
+<!--<pre>-->
+<!--    --><?php //=
+//    var_dump($_SESSION['tasks'])
+//
+//    ?>
+<!--</pre>-->
     </main>
 </body>
 

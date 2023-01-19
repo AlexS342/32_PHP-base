@@ -2,23 +2,35 @@
 
 class Task
 {
+    private int $id;
     private string $description;
-    private int $priority;
-    private bool $isDone = false;
+    private string $priority;
+    private int $isDone;
     private DateTime $dateCreated;
     private DateTime $dateUpdated;
     private ?DateTime $dateDone = null;
-    private User $user;
+    private ?int $userId;
 
-    public function __construct (string $description, int $priority, User $author)
+    public function __construct (int $id, string $description, string $priority, int $isDone, string $dateCreated, string $dateUpdated, ?string $dateDone, int $userId)
     {
+        $this->id = $id;
         $this->description = $description;
         $this->priority = $priority;
-        $this->user = $author;
-        $this->dateCreated = new DateTime();
-        $this->dateUpdated = new DateTime();
+        $this->isDone = $isDone;
+        $this->dateCreated = new DateTime($dateCreated);
+        $this->dateUpdated = new DateTime($dateUpdated);
+        if($dateDone !== null){
+            $this->dateDone = new DateTime($dateDone);
+        }else{
+            $this->dateDone = null;
+        }
+        $this->userId = $userId;
     }
 
+    public function getId () : int
+    {
+        return $this->id;
+    }
     public function getDescription () : string
     {
         return $this->description;
@@ -27,7 +39,7 @@ class Task
     {
         return $this->priority;
     }
-    public function getIsDone () : bool
+    public function getIsDone () : int
     {
         return $this->isDone;
     }
@@ -43,38 +55,29 @@ class Task
     {
         return $this->dateDone;
     }
-    public function getUser () : User
+    public function getUserId () : int
     {
-        return $this->user;
+        return $this->userId;
     }
 
-    public function setIsDone () : void
-    {
-        $this->isDone = true;
-        $this->dateUpdated = new DateTime();
-        $this->dateDone = new DateTime();
-    }
-
-    public function getArrayDataTask() : array
+    public function getArrayDataTaskForShow() : array
     {
         $arr = [];
         $arr['description'] = $this->description;
         $arr['priority'] = $this->priority;
         $arr['isDone'] = $this->isDone;
-        $arr['dateCreated'] = $this->getDateCreated()->format('d-m-Y h:i');
+        $arr['dateCreated'] = $this->getDateCreated()->format('d-m-Y h:i:s');
 
         if($this->getDateUpdated() !== null){
-            $arr['dateUpdated'] = $this->getDateUpdated()->format('d-m-Y h:i');
+            $arr['dateUpdated'] = $this->getDateUpdated()->format('d-m-Y h:i:s');
         }else{
             $arr['dateUpdated'] = null;
         }
         if($this->getDateDone() !== null){
-            $arr['dateDone'] = $this->getDateDone()->format('d-m-Y h:i');
+            $arr['dateDone'] = $this->getDateDone()->format('d-m-Y h:i:s');
         }else{
             $arr['dateDone'] = null;
         }
-
-        $arr['user'] = $this->getUser()->getUsername();
 
         return $arr;
     }

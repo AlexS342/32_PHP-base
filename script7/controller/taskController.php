@@ -11,31 +11,25 @@ if($_SESSION['username'] === null){
     die;
 }
 
-$username = null;
+$pdo = require 'db.php';
 
-$user = $_SESSION['username'];
-$username = $user->getUsername();
-$taskProvider = new TaskProvider();
+$taskProvider = new TaskProvider($pdo);
 
-if(isset($_POST['discription']) && $_POST['discription'] !== ''){
-    $taskProvider->addTask($_POST['discription'], (int) $_POST['priority'], $user);
+if(isset($_POST['description']) && $_POST['description'] !== ''){
+    $taskProvider->addTask($_POST['description'], (int) $_POST['priority'], /*$user*/);
 }
 
 if(isset($_GET['doneTask']) && $_GET['doneTask'] === 'TRUE'){
-    $taskProvider->setIsDoneTask($_GET['doneTaskID']);
+    $taskProvider->setIsDoneTaskBD($_GET['doneTaskID']);
 }
 
 if(isset($_GET['removeTask']) && $_GET['removeTask'] === 'TRUE'){
-    $taskProvider->setRemoveTask($_GET['removeTaskID']);
+    $taskProvider->setRemoveTaskBD($_GET['removeTaskID']);
 }
 
-if(isset($_SESSION['task'])){
-    $dataTask = $taskProvider->getArrayAllDataTask();
-}else{
-    $dataTask = [];
-}
+//$dataTask = $taskProvider->getAllTasksBD();
 
-if(isset($_GET['show']) && $_GET['show'] === 'allTask'){
+if(isset($_GET['show']) && $_GET['show'] === 'allTask' || !isset($_GET['show'])){
     $_SESSION['showTasks'] = 'allTask';
 }
 
@@ -47,20 +41,18 @@ if(isset($_GET['show']) && $_GET['show'] === 'done'){
     $_SESSION['showTasks'] = 'done';
 }
 
-if(isset($_SESSION['showTasks']) && $_SESSION['showTasks'] === 'notDone'){
-    $dataTask = $taskProvider->getArrayNotDoneTask();
+$dataTask = [];
+
+if($_SESSION['showTasks'] === 'allTask'){
+    $dataTask = $taskProvider->getAllTasksBD();
 }
 
-if(isset($_SESSION['showTasks']) && $_SESSION['showTasks'] === 'done'){
-    $dataTask = $taskProvider->getArrayDoneTask();
+if($_SESSION['showTasks'] === 'notDone'){
+    $dataTask = $taskProvider->getNotIsDoneTasksBD();
 }
 
-$show = $_SESSION['showTasks'] ?? 'allTask';
-
-
-if(isset($_POST['discription']) || isset($_GET['doneTask']) || isset($_GET['removeTask'])  || isset($_GET['show'])){
-    header("Location: /?controller=task");
-    die;
+if($_SESSION['showTasks'] === 'done'){
+    $dataTask = $taskProvider->getIsDoneTasksBD();
 }
 
 $page ='task';

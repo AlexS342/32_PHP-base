@@ -5,9 +5,11 @@ require_once 'model/UserProvider.php';
 
 session_start();
 
+$pdo = require 'db.php';
+
 if(isset($_POST['username'], $_POST['password'])){
     ['username'=>$username, 'password'=>$password] = $_POST;
-    $userProvider = new UserProvider();
+    $userProvider = new UserProvider($pdo);
     $user = $userProvider->getByUsernameAndPasswor($username, $password);
     if($user === null){
         $error = 'Неверный логин или пароль.';
