@@ -27,8 +27,6 @@ if(isset($_GET['removeTask']) && $_GET['removeTask'] === 'TRUE'){
     $taskProvider->setRemoveTaskBD($_GET['removeTaskID']);
 }
 
-//$dataTask = $taskProvider->getAllTasksBD();
-
 if(isset($_GET['show']) && $_GET['show'] === 'allTask' || !isset($_GET['show'])){
     $_SESSION['showTasks'] = 'allTask';
 }
@@ -42,17 +40,33 @@ if(isset($_GET['show']) && $_GET['show'] === 'done'){
 }
 
 $dataTask = [];
+$_SESSION['selectTasks'] = [];
 
 if($_SESSION['showTasks'] === 'allTask'){
-    $dataTask = $taskProvider->getAllTasksBD();
+    $dataTask2 = $taskProvider->getAllTasksBD();
+    foreach ($dataTask2 as $itemDataTask)
+    {
+//        $dataTask[] = $itemDataTask->getArrayDataTaskForShow();
+        $_SESSION['selectTasks'][] = $itemDataTask->getArrayDataTaskForShow();
+    }
 }
 
 if($_SESSION['showTasks'] === 'notDone'){
-    $dataTask = $taskProvider->getNotIsDoneTasksBD();
+    $dataTask2 = $taskProvider->getNotIsDoneTasksBD();
+    foreach ($dataTask2 as $itemDataTask)
+    {
+//        $dataTask[] = $itemDataTask->getArrayDataTaskForShow();
+        $_SESSION['selectTasks'][] = $itemDataTask->getArrayDataTaskForShow();
+    }
 }
 
 if($_SESSION['showTasks'] === 'done'){
-    $dataTask = $taskProvider->getIsDoneTasksBD();
+    $dataTask2 = $taskProvider->getIsDoneTasksBD();
+    foreach ($dataTask2 as $itemDataTask)
+    {
+//        $dataTask[] = $itemDataTask->getArrayDataTaskForShow();
+        $_SESSION['selectTasks'][] = $itemDataTask->getArrayDataTaskForShow();
+    }
 }
 
 $page ='task';

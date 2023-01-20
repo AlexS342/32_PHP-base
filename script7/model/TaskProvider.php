@@ -21,64 +21,46 @@ class TaskProvider
         $newTask->execute($arr);
     }
 
-    public function getAllTasksBD () : ?array
+    //Функции getAllTasksBD2, getNotIsDoneTasksBD2 и getIsDoneTasksBD2 пока еще в разработке для использования класса Task
+    public function getAllTasksBD () : array
     {
         $userId = $_SESSION['username']->getId();
         $selectAllTask = $this->pdo->query("SELECT * FROM tasks WHERE userId=$userId");
-        return $selectAllTask->fetchAll();
+        $selectAllTaskArr = $selectAllTask->fetchAll();
+        $objTask = [];
+        foreach($selectAllTaskArr as $arrTask)
+        {
+            $obj = new Task(...$arrTask);
+            $objTask[] = $obj;
+        }
+        return $objTask;
     }
-
-    public function getNotIsDoneTasksBD () : ?array
+    public function getNotIsDoneTasksBD () : array
     {
         $userId = $_SESSION['username']->getId();
         $selectAllTask = $this->pdo->query("SELECT * FROM tasks WHERE isDone=0 AND userId=$userId");
-        return $selectAllTask->fetchAll();
+        $selectAllTaskArr = $selectAllTask->fetchAll();
+        $objTask = [];
+        foreach($selectAllTaskArr as $arrTask)
+        {
+            $obj = new Task(...$arrTask);
+            $objTask[] = $obj;
+        }
+        return $objTask;
     }
-
-    public function getIsDoneTasksBD () : ?array
+    public function getIsDoneTasksBD () : array
     {
         $userId = $_SESSION['username']->getId();
         $selectAllTask = $this->pdo->query("SELECT * FROM tasks WHERE isDone=1 AND userId=$userId");
-        return $selectAllTask->fetchAll();
+        $selectAllTaskArr = $selectAllTask->fetchAll();
+        $objTask = [];
+        foreach($selectAllTaskArr as $arrTask)
+        {
+            $obj = new Task(...$arrTask);
+            $objTask[] = $obj;
+        }
+        return $objTask;
     }
-
-    //Функции getAllTasksBD2, getNotIsDoneTasksBD2 и getIsDoneTasksBD2 пока еще в разработке для использования класса Task
-//    public function getAllTasksBD2 () : void
-//    {
-//        $userId = $_SESSION['username']->getId();
-//        $selectAllTask = $this->pdo->query("SELECT * FROM tasks WHERE userId=$userId");
-//        $selectAllTaskArr = $selectAllTask->fetchAll();
-//        $_SESSION['tasksClass'] = [];
-//        foreach($selectAllTaskArr as $arrTask)
-//        {
-//            $obj = new Task(...$arrTask);
-//            $_SESSION['tasksClass'][] = $obj;
-//        }
-//    }
-//    public function getNotIsDoneTasksBD2 () : void
-//    {
-//        $userId = $_SESSION['username']->getId();
-//        $selectAllTask = $this->pdo->query("SELECT * FROM tasks WHERE isDone=0 AND userId=$userId");
-//        $selectAllTaskArr = $selectAllTask->fetchAll();
-//        $_SESSION['tasksClass'] = [];
-//        foreach($selectAllTaskArr as $arrTask)
-//        {
-//            $obj = new Task(...$arrTask);
-//            $_SESSION['tasksClass'][] = $obj;
-//        }
-//    }
-//    public function getIsDoneTasksBD2 () : void
-//    {
-//        $userId = $_SESSION['username']->getId();
-//        $selectAllTask = $this->pdo->query("SELECT * FROM tasks WHERE isDone=1 AND userId=$userId");
-//        $selectAllTaskArr = $selectAllTask->fetchAll();
-//        $_SESSION['tasksClass'] = [];
-//        foreach($selectAllTaskArr as $arrTask)
-//        {
-//            $obj = new Task(...$arrTask);
-//            $_SESSION['tasksClass'][] = $obj;
-//        }
-//    }
 
     public function setIsDoneTaskBD (int $id) : void
     {

@@ -63,9 +63,10 @@ class Task
     public function getArrayDataTaskForShow() : array
     {
         $arr = [];
-        $arr['description'] = $this->description;
-        $arr['priority'] = $this->priority;
-        $arr['isDone'] = $this->isDone;
+        $arr['id'] = $this->getId();
+        $arr['description'] = $this->getDescription();
+        $arr['priority'] = $this->getPriority();
+        $arr['isDone'] = $this->getIsDone ();
         $arr['dateCreated'] = $this->getDateCreated()->format('d-m-Y h:i:s');
 
         if($this->getDateUpdated() !== null){

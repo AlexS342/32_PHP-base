@@ -73,8 +73,8 @@ if($_SESSION['username'] === null){
                 </div>
 
                 <div class="task-list">
-                    <?php if(count($dataTask) > 0): ?>
-                        <?php foreach($dataTask as $task) : ?>
+                    <?php if(count($_SESSION['selectTasks']) > 0): ?>
+                        <?php foreach($_SESSION['selectTasks'] as $task) : ?>
                             <?php ['id'=>$key, 'description' => $description, 'priority' => $priority, 'isDone' => $isDone, 'dateCreated' => $dateCreated] = $task?>
                                 <?php include "itemTask.php"; ?>
                         <?php endforeach ?>
@@ -89,12 +89,6 @@ if($_SESSION['username'] === null){
                     <?php endif ?>
                 </div>
             </div>
-<!--<pre>-->
-<!--    --><?php //=
-//    var_dump($_SESSION['tasks'])
-//
-//    ?>
-<!--</pre>-->
     </main>
 </body>
 
