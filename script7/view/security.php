@@ -22,6 +22,12 @@
             <div class="security_header">
                 <h3 class="hd1">Авторизация</h3>
             </div>
+            <?php if($error !== null):?>
+                <div class="security_error">
+                    <?php if($error === 'registrationUserExists'):?><p>Такой пользователь уже существует</p><?php endif;?>
+                    <?php if($error === 'enterUserNotFound'):?><p>Неправильный логин или пароль</p><?php endif;?>
+                </div>
+            <?php endif;?>
             <div class="security_fieldWRP">
                 <div class="security_field">
                     <div class="form-floating mb-3">
@@ -38,7 +44,8 @@
             </div>
             <div  class="security_button">
                 <a href="/"><button class="btn btn-primary" type="button">на главную</button></a>
-                <button class="btn btn-primary" type="submit">Войти</button>
+                <button class="btn btn-primary" formaction="/?controller=security&action=registration" type="submit">Регистрация</button>
+                <button class="btn btn-primary" formaction="/?controller=security&action=enter" type="submit">Войти</button>
             </div>
         </form>
     </main>

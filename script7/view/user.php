@@ -31,6 +31,12 @@ if($_SESSION['username'] === null){
             <h1 class="hd1">Личный кабинет</h1>
             
             <div class="data">
+                <h3 class="hd1">
+                    Дорогой пользователь!!!
+                </h3>
+                <h3 class="hd1">
+                    Страница личного кабинета находится в стадии разработки, а большенство данных статичны и не подлежат изменению!!!
+                </h3>
                 <div class="data-photo"><p>P</p></div>
                 <h3 class="hd1"><?=$user?></h3>
                 <ul class="dataList">

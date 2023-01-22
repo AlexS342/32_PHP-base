@@ -3,6 +3,16 @@
     flex-direction: column;
 }
 
+.security_error{
+    display: flex;
+    border: 1px solid #ff8c8c;
+    border-radius: 6px;
+    background-color: #ffcccc;
+    margin: 0 auto;
+    margin-bottom: 12px;
+    padding: 6px 12px;
+}
+
 .security_header {
     display: flex;
     justify-content: center;

@@ -9,6 +9,14 @@ class UserProvider
         $this->pdo = $pdo;
     }
 
+    public function searchUserInUsersByUsername(string $username) :bool
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM users WHERE username = ? LIMIT 1");
+        $statement->execute([$username]);
+        $arr = $statement->fetch();
+        return is_array($arr) ? true : false;
+    }
+
     public function registerUser(User $user, string $plainPassword): bool
     {
         $statement = $this->pdo->prepare( 'INSERT INTO users (name, username, password) VALUES (:name, :username, :password)' );
@@ -30,6 +38,5 @@ class UserProvider
             'password' => md5($password)
         ]);
         return $statement->fetchObject(User::class, [$username]) ?: null;
-        // fetch может вернуть false, а мы поддерживаем только null и User
     }
 }
