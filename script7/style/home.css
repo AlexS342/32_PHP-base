@@ -1,0 +1,12 @@
+.home {
+    margin: 0 20px;
+}
+
+.home-item {
+    margin: 12px 0;
+    text-align: justify
+}
+
+.home-itemP {
+    line-height: 20px;
+}
